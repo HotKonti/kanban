@@ -184,7 +184,7 @@ class KanbanController < ApplicationController
 
     if @show_ancestors != 1 then
       issues_for_projects = issues_for_projects.where(parent_issue_id: nil)
-    END
+    end
 
     if Constants::SELECT_LIMIT_STRATEGY == 1 then
       issues_for_projects = issues_for_projects.limit(Constants::SELECT_LIMIT)
