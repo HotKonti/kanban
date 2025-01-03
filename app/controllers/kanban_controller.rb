@@ -182,6 +182,10 @@ class KanbanController < ApplicationController
       .where("updated_on >= '" + updated_from + "'")
       .where(is_private: 0)
 
+    if @show_ancestors != 1 then
+      issues_for_projects = issues_for_projects.where(parent_issue_id: nil)
+    END
+
     if Constants::SELECT_LIMIT_STRATEGY == 1 then
       issues_for_projects = issues_for_projects.limit(Constants::SELECT_LIMIT)
     end
